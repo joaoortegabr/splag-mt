@@ -1,0 +1,1 @@
+CREATE DATABASE bd_splag_mt;
