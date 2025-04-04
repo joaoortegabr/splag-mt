@@ -11,28 +11,33 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "endereco")
+@Table(name = "endereco", indexes = {
+	    @Index(name = "idx_end_id", columnList = "end_id")
+	})
 public class Endereco implements Serializable {
 	private static final long serialVersionUID = -7223701444959301215L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "end_id")
 	private Long endId;
-	@Column(length = 50)
+	@Column(name = "end_tipo_logradouro", length = 50)
 	private String endTipoLogradouro;
-	@Column(length = 200)
+	@Column(name = "end_logradouro", length = 200)
 	private String endLogradouro;
+	@Column(name = "end_numero")
 	private Integer endNumero;
-	@Column(length = 100)
+	@Column(name = "end_bairro", length = 100)
 	private String endBairro;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cidId", nullable = false)
+	@JoinColumn(name = "cid_id", nullable = false)
 	private Cidade cidId;
 	@OneToMany(mappedBy = "endId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<UnidadeEndereco> unidadeEndereco;

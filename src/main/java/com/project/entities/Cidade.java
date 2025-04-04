@@ -10,20 +10,24 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "cidade")
+@Table(name = "cidade", indexes = {
+	    @Index(name = "idx_cid_id", columnList = "cid_id")
+	})
 public class Cidade implements Serializable {
 	private static final long serialVersionUID = 4939571542886365015L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cid_id")
 	private Long cidId;
-	@Column(length = 200)
+	@Column(name = "cid_nome", length = 200)
 	private String cidNome;
-	@Column(length = 2)
+	@Column(name = "cid_uf", length = 2)
 	private String cidUf;
 	@OneToMany(mappedBy = "cidId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Endereco> endereco;

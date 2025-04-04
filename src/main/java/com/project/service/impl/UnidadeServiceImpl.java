@@ -1,16 +1,21 @@
 package com.project.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.project.entities.Unidade;
 import com.project.exceptions.ResourceNotFoundException;
+import com.project.models.dtos.EnderecoUnidadePorNomeServidorResponse;
 import com.project.repositories.UnidadeRepository;
 import com.project.service.CRUDService;
 import com.project.utils.PaginationRequest;
@@ -69,6 +74,33 @@ public class UnidadeServiceImpl implements CRUDService<Unidade> {
 		findById(unidId);
 		unidadeRepository.deleteById(unidId);
 		return "Registro removido com sucesso.";
+	}
+	
+	public Page<EnderecoUnidadePorNomeServidorResponse> findEnderecoUnidadePorNomeServidor(String pesNome, PaginationRequest paginationRequest) {
+		log.info("Executing service findEnderecoUnidadePorNomeServidor with param: pesNome={}", pesNome);
+	    PageRequest pageRequest = PageRequest.of(
+	            paginationRequest.getPage(),
+	            paginationRequest.getSize(),
+	            Sort.by(Sort.Direction.fromString(paginationRequest.getSortDirection()), "cidNome")
+	        );
+	    Page<Object[]> results = unidadeRepository.findnderecoPorNomeServidor(pesNome, convertToPageable(pageRequest));
+	    
+	    List<EnderecoUnidadePorNomeServidorResponse> responseList = results.stream()
+	            .map(obj -> new EnderecoUnidadePorNomeServidorResponse(
+	                (String) obj[0],
+	                (String) obj[1],
+	                (Integer) obj[2],
+	                (String) obj[3],
+	                (String) obj[4],
+	                (String) obj[5]
+	            ))
+	            .collect(Collectors.toList());
+	    
+	    return new PageImpl<>(responseList, pageRequest, results.getTotalElements());
+	}
+	
+	private Pageable convertToPageable(PageRequest pageRequest) {
+	    return PageRequest.of(pageRequest.getPageNumber(), pageRequest.getPageSize());
 	}
 	
 }

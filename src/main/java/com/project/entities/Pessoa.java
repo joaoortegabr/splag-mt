@@ -13,26 +13,31 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "pessoa")
+@Table(name = "pessoa", indexes = {
+	    @Index(name = "idx_pes_id", columnList = "pes_id")
+	})
 public class Pessoa implements Serializable {
 	private static final long serialVersionUID = -8155722864456324062L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "pes_id")
 	private Long pesId;
-	@Column(length = 200)
+	@Column(name = "pes_nome", length = 200)
 	private String pesNome;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@Column(name = "pes_data_nascimento")
 	private LocalDate pesDataNascimento;
-	@Column(length = 9)
+	@Column(name = "pes_sexo", length = 9)
 	private String pesSexo;
-	@Column(length = 200)
+	@Column(name = "pes_mae",length = 200)
 	private String pesMae;
-	@Column(length = 200)
+	@Column(name = "pes_pai", length = 200)
 	private String pesPai;
 	@OneToMany(mappedBy = "pesId", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FotoPessoa> fotoPessoa;

@@ -22,20 +22,22 @@ public class Lotacao implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "lotId")
+	@Column(name = "lot_id")
 	private Long lotId;
 	
 	@Id
-	@Column(name = "pesId")
+	@Column(name = "pes_id")
 	private Long pesId;
 	
 	@Id
-	@Column(name = "unidId")
+	@Column(name = "unid_id")
 	private Long unidId;
 	
+	@Column(name = "lot_data_lotacao")
 	private LocalDate lotDataLotacao;
+	@Column(name = "lot_data_remocao")
 	private LocalDate lotDataRemocao;
-	@Column(length = 100)
+	@Column(name = "lot_portaria", length = 100)
 	private String lotPortaria;
 	
 	public Lotacao() {

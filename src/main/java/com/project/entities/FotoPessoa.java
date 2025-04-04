@@ -25,12 +25,12 @@ public class FotoPessoa implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "fpId")
+	@Column(name = "fp_id")
 	private Long fpId;
 	
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pesId", referencedColumnName = "pesId", nullable = false)
+    @JoinColumn(name = "pes_id", referencedColumnName = "pes_id", nullable = false)
 	private Pessoa pesId;
     
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")

@@ -18,10 +18,10 @@ public class ServidorEfetivo implements Serializable {
 	private static final long serialVersionUID = -2993846180935236148L;
 	
 	@Id
-	@Column(name = "pesId")
+	@Column(name = "pes_id")
 	private Long pesId;
 	
-	@Column(length = 20)
+	@Column(name = "se_matricula", length = 20)
 	private String seMatricula;
 
 	public ServidorEfetivo() {

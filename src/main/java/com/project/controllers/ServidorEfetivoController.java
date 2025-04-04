@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.project.entities.ServidorEfetivo;
+import com.project.models.dtos.ServidorEfetivoLotadoPorUnidadeResponse;
 import com.project.models.dtos.ServidorEfetivoRequest;
 import com.project.models.dtos.ServidorEfetivoResponse;
 import com.project.models.mappers.ServidorEfetivoMapper;
@@ -80,4 +81,11 @@ public class ServidorEfetivoController {
 		return ResponseEntity.ok(msg);
 	}
 
+	@GetMapping(value = "/lotados/{unidId}")
+	public ResponseEntity<Page<ServidorEfetivoLotadoPorUnidadeResponse>> findServidorEfetivoLotadoPorUnidade(@PathVariable Long unidId, PaginationRequest paginationRequest) {
+		log.info("Receiving request to findServidorEfetivoLotadoPorUnidade with param: unidId={}", unidId);
+		Page<ServidorEfetivoLotadoPorUnidadeResponse> resultPage = servidorEfetivoService.findServidorEfetivoLotadoPorUnidade(unidId, paginationRequest);
+	    return ResponseEntity.ok(resultPage);
+	}
+	
 }

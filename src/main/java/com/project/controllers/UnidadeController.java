@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.project.entities.Unidade;
+import com.project.models.dtos.EnderecoUnidadePorNomeServidorResponse;
 import com.project.models.dtos.UnidadeRequest;
 import com.project.models.dtos.UnidadeResponse;
 import com.project.models.mappers.UnidadeMapper;
@@ -80,4 +81,11 @@ public class UnidadeController {
 		return ResponseEntity.ok(msg);
 	}
 
+	@GetMapping(value = "/busca/{pesNome}")
+	public ResponseEntity<Page<EnderecoUnidadePorNomeServidorResponse>> findEnderecoUnidadePorNomeServidor(@PathVariable String pesNome, PaginationRequest paginationRequest) {
+		log.info("Receiving request to findEnderecoUnidadePorNomeServidor with param: pesNome={}", pesNome);
+		Page<EnderecoUnidadePorNomeServidorResponse> resultPage = unidadeService.findEnderecoUnidadePorNomeServidor(pesNome, paginationRequest);
+	    return ResponseEntity.ok(resultPage);
+	}
+	
 }

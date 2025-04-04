@@ -20,12 +20,14 @@ public class ServidorTemporario implements Serializable {
 	private static final long serialVersionUID = -5274859839328934179L;
 	
 	@Id
-	@Column(name = "pesId")
+	@Column(name = "pes_id")
 	private Long pesId;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@Column(name = "st_data_admissao")
 	private LocalDate stDataAdmissao;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@Column(name = "st_data_demissao")
 	private LocalDate stDataDemissao;
 
 	

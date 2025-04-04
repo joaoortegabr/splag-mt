@@ -3,23 +3,14 @@ package com.project.entities.ck;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.project.entities.Pessoa;
-import com.project.entities.Unidade;
-
 public class LotacaoCK implements Serializable {
 	private static final long serialVersionUID = -3456187517434316210L;
 
 	private Long lotId;
-	private Pessoa pesId;
-	private Unidade unidId;
+	private Long pesId;
+	private Long unidId;
 	
 	public LotacaoCK() {
-	}
-
-	public LotacaoCK(Long lotId, Pessoa pesId, Unidade unidId) {
-		this.lotId = lotId;
-		this.pesId = pesId;
-		this.unidId = unidId;
 	}
 
 	public Long getLotId() {
@@ -30,19 +21,19 @@ public class LotacaoCK implements Serializable {
 		this.lotId = lotId;
 	}
 
-	public Pessoa getPesId() {
+	public Long getPesId() {
 		return pesId;
 	}
 
-	public void setPesId(Pessoa pesId) {
+	public void setPesId(Long pesId) {
 		this.pesId = pesId;
 	}
 
-	public Unidade getUnidId() {
+	public Long getUnidId() {
 		return unidId;
 	}
 
-	public void setUnidId(Unidade unidId) {
+	public void setUnidId(Long unidId) {
 		this.unidId = unidId;
 	}
 

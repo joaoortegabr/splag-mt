@@ -17,12 +17,12 @@ public class UnidadeEndereco {
 
 	@Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "endId", referencedColumnName = "endId", nullable = false)
+    @JoinColumn(name = "end_id", referencedColumnName = "end_id", nullable = false)
     private Endereco endId;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "unidId", referencedColumnName = "unidId", nullable = false)
+    @JoinColumn(name = "unid_id", referencedColumnName = "unid_id", nullable = false)
     private Unidade unidId;
 
 	public Endereco getEndId() {
