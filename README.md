@@ -1,23 +1,48 @@
-# CRUD Project
+# Projeto prático para Seplag-MT
 
 ## Spring MVC Project
-- Java 17
-- Docker
-- PostgreSQL
+    - Java 17
+    - Docker
+    - PostgreSQL
+    - Minio
 
 ### Endpoints
-- FindAll
-- FindById
-- Create record
-- Update record
-- Delete record
-- Activate/Deactivate record
+Endpoints disponíveis: 
+    v1/unidades
+    v1/lotacoes
+    v1/servidores-efetivos
+    v1/servidores-temporarios
 
-### Other features
-- CPF and email validation using Spring annotations
-- Pagination and sorting for FindAll
-- Activation/deactivation of records
-- Logical deletion
-- Mapstruct for DTOs in Controller layer
-- Global Exception Handler
-- Unit test coverage over 95%
+    Com métodos para edição de registros:
+    - FindAll
+    - FindById
+    - Save
+    - Update
+    - Delete
+
+    v1/unidades/busca/{pesNome}
+    Sendo 'pesNome' uma string para buscar pelo nome do servidor
+
+    v1/servidores-efetivos/lotados/{unidId}
+    Sendo 'unidId' um integer para buscar pelo id da unidade
+
+### Segurança
+Endpoints protegidos com segurança (autorização e autenticação).
+Desabilitados no código para facilitar o acesso:
+    - v1/unidades/busca/{pesNome}
+    - v1/servidores-efetivos/lotados/{unidId}
+
+### Características
+    - Paginação para retorno de FindAll e para as buscas específicas com parâmetros
+    - Mapstruct para DTOs na camada Controller
+    - Global Exception Handler
+    - Cobertura de testes unitários acima de 90% em Unidades, como exemplo
+
+ ### Instruções
+Para rodar a aplicação, clone este repositório e rode o comando:
+    mvn spring-boot:run
+
+Para rodar o projeto, rodar o Docker com o comando: 
+    docker-compose up -d
+
+
