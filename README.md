@@ -1,31 +1,25 @@
 ## Seplag-MT
 ### Projeto prático para Seplag-MT
 
-## Spring MVC Project
-    - Java 17
-    - Docker
-    - PostgreSQL
-    - Minio
+## Tecnologias
+- Java 17
+- Docker
+- PostgreSQL
+- Minio
 
 ### Endpoints
-Endpoints disponíveis: 
-    - v1/unidades
-    - v1/lotacoes
-    - v1/servidores-efetivos
-    - v1/servidores-temporarios
+Endpoints disponíveis com CRUD (FindAll, FindById, Create, Update, Delete):
+- v1/unidades
+- v1/lotacoes
+- v1/servidores-efetivos
+- v1/servidores-temporarios
 
-    Com métodos para edição de registros:
-    - FindAll
-    - FindById
-    - Save
-    - Update
-    - Delete
+Endpoints adicionais:
+- v1/unidades/busca/{pesNome}
+Sendo 'pesNome' uma string para buscar pelo nome do servidor
 
-    - v1/unidades/busca/{pesNome}
-    Sendo 'pesNome' uma string para buscar pelo nome do servidor
-
-    - v1/servidores-efetivos/lotados/{unidId}
-    Sendo 'unidId' um integer para buscar pelo id da unidade
+- v1/servidores-efetivos/lotados/{unidId}
+Sendo 'unidId' um integer para buscar pelo id da unidade
 
 ### Segurança
 Endpoints protegidos com segurança (autorização e autenticação).
@@ -34,10 +28,10 @@ Desabilitados no código para facilitar o acesso:
     - v1/servidores-efetivos/lotados/{unidId}
 
 ### Características
-    - Paginação para retorno de FindAll e para as buscas específicas com parâmetros
-    - Mapstruct para DTOs na camada Controller
-    - Global Exception Handler
-    - Cobertura de testes unitários acima de 90% em Unidades, como exemplo
+- Paginação para retorno de FindAll e para as buscas específicas com parâmetros
+- Mapstruct para DTOs na camada Controller
+- Global Exception Handler
+- Cobertura de testes unitários acima de 90% em Unidades, como exemplo
 
  ### Instruções
  Para rodar o projeto, rodar o Docker com o comando: 
