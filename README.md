@@ -1,5 +1,8 @@
 ## Seplag-MT
 ### Projeto prático para Seplag-MT
+João Marcello Ortega de Araujo
+joaoortegabr@gmail.com
+São Paulo, SP
 
 ## Tecnologias
 - Java 17
@@ -16,16 +19,15 @@ Endpoints disponíveis com CRUD (FindAll, FindById, Create, Update, Delete):
 
 Endpoints adicionais:
 - v1/unidades/busca/{pesNome}
-Sendo 'pesNome' uma string para buscar pelo nome do servidor
-
+ | Sendo 'pesNome' uma string para buscar pelo nome do servidor
 - v1/servidores-efetivos/lotados/{unidId}
-Sendo 'unidId' um integer para buscar pelo id da unidade
+ | Sendo 'unidId' um integer para buscar pelo id da unidade
 
 ### Segurança
 Endpoints protegidos com segurança (autorização e autenticação).
 Desabilitados no código para facilitar o acesso:
-    - v1/unidades/busca/{pesNome}
-    - v1/servidores-efetivos/lotados/{unidId}
+- v1/unidades/busca/{pesNome}
+- v1/servidores-efetivos/lotados/{unidId}
 
 ### Características
 - Paginação para retorno de FindAll e para as buscas específicas com parâmetros
@@ -42,6 +44,7 @@ Desabilitados no código para facilitar o acesso:
 
  ### Outras informações
  Relação das entidades no banco de dados solicitado no projeto:
+
  ![image](https://github.com/user-attachments/assets/0f171e75-54b3-44db-be26-7bcd8dd18602)
 
 
