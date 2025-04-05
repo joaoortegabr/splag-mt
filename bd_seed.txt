@@ -1,0 +1,77 @@
+Script para popular o banco de dados:
+
+INSERT INTO cidade (cid_id, cid_nome, cid_uf)
+VALUES
+(1, 'Cuiabá', 'MT'),
+(2, 'São Paulo', 'SP'),
+(3, 'Rio de Janeiro', 'RJ'),
+(4, 'Belo Horizonte', 'MG'),
+(5, 'Porto Alegre', 'RS');
+
+INSERT INTO endereco (end_id, end_tipo_logradouro, end_logradouro, end_numero, end_bairro, cid_id)
+VALUES
+(1, 'Avenida', 'do CPA', 1234, 'Cuiabá Centro', 1),
+(2, 'Rua', '15 de Novembro', 567, 'Centro', 2),
+(3, 'Rua', 'da Carioca', 890, 'Centro', 3),
+(4, 'Avenida', 'dos Andradas', 123, 'Centro', 4),
+(5, 'Rua', 'dos Andradas', 456, 'Centro', 5); 
+
+INSERT INTO unidade (unid_id, unid_nome, unid_sigla)
+VALUES
+(1, 'Cuiabá Center', 'CB_MT-012'),
+(2, 'São Paulo Center', 'SP_SP-008'),
+(3, 'Rio de Janeiro Filial', 'RJ_RJ-004');
+
+INSERT INTO unidade_endereco (unid_id, end_id)
+VALUES
+(1, 1),
+(2, 2),
+(3, 3);
+
+INSERT INTO pessoa (pes_id, pes_nome, pes_data_nascimento, pes_sexo, pes_mae, pes_pai)
+VALUES
+(1, 'João Silva', '1990-05-15', 'M', 'Maria Silva', 'Carlos Silva'),
+(2, 'Ana Oliveira', '1985-09-23', 'F', 'Cláudia Oliveira', 'Roberto Oliveira'),
+(3, 'Pedro Santos', '1992-11-30', 'M', 'Fernanda Santos', 'José Santos'),
+(4, 'Mariana Costa', '2000-02-10', 'F', 'Juliana Costa', 'Ricardo Costa'),
+(5, 'Carlos Pereira', '1988-07-05', 'M', 'Luciana Pereira', 'Antônio Pereira');
+
+INSERT INTO foto_pessoa (pes_id, fp_data, fp_bucket, fp_hash)
+VALUES
+(1, '2025-04-01', 'url1', 'hash1_123'),
+(2, '2020-07-22', 'url2', 'hash2_456'),
+(3, '2018-02-13', 'url3', 'hash3_789'),
+(4, '2021-03-04', 'url4', 'hash4_101'),
+(5, '2023-07-25', 'url5', 'hash5_112');
+
+INSERT INTO lotacao (lot_id, pes_id, unid_id, lot_data_lotacao, lot_data_remocao, lot_portaria)
+VALUES
+(1, 1, 1, '2023-01-01', '2025-01-01', 'Portaria 001'),
+(2, 2, 2, '2020-02-01', '2025-02-14', 'Portaria 002'),
+(3, 3, 2, '2021-03-01', '2024-01-01', 'Portaria 003'),
+(4, 4, 3, '2014-04-01', '2022-01-01', 'Portaria 004'),
+(5, 5, 3, '2025-05-01', NULL, 'Portaria 005');
+
+INSERT INTO pessoa_endereco (end_id, pes_id)
+VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5);
+
+INSERT INTO servidor_efetivo (pes_id, se_matricula)
+VALUES
+(1, 'MATRICULA001'),
+(2, 'MATRICULA002'),
+(3, 'MATRICULA003');
+
+INSERT INTO servidor_temporario (pes_id, st_data_admissao, st_data_demissao)
+VALUES
+(4, '2022-01-01', '2025-12-31'),
+(5, '2018-02-01', NULL);
+
+INSERT INTO app_user (user_id, username, password, role)
+VALUES
+(1, 'admin', '123', 'ADMIN'),
+(2, 'user', '123', 'USER');
